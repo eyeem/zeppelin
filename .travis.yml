@@ -4,7 +4,7 @@ notifications:
   email: false
   hipchat:
     rooms:
-      secure: coAicb4gDk5m03J7BZLE7AtHXql1nFg4Uxv5jtGlUGLV9srNZ8X3SNZK+CnMywcKtMJlvJMi573TdrvUna4VP1XQkIEsZtL+xRvNkXszTjWmOlUW4EXTUZJoeywLhOAbtVYf0aaVtOCoFvxovamG7rNL+ylxBuxTcjcbHJywpHM=
+      secure: WBwVyXgr3Q+XbgAOaV2imME34sNfovvetvCyJdIYJxZXcsK8802Ls0m2ckkQiJysPm1Fwzr0BBHLv9WzJ7l2An6ZjjVwkk/pOOF9o/hMu9s+4ZadNUScs00KXs1+dCi5Hm3xVVO9/KyHGV96GjBET4IsRZukc0tzpMnDSiBeO2I=
 env:
   matrix:
   - ANDROID_SDKS=android-19,sysimg-19  ANDROID_TARGET=android-19  ANDROID_ABI=armeabi-v7a

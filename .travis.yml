@@ -28,6 +28,7 @@ before_install:
 - echo yes | android update sdk --filter extra-android-m2repository --no-ui --force
   > /dev/null
 - mkdir ~/.gradle
-- echo "sonatypeRepo=https://oss.sonatype.org/content/repositories/snapshots/" > ~/.gradle/gradle.properties
+- echo "sonatypeRepo=https://oss.sonatype.org/service/local/staging/deploy/maven2/" > ~/.gradle/gradle.properties
+- echo "sonatypeSnapshotRepo=https://oss.sonatype.org/content/repositories/snapshots/" > ~/.gradle/gradle.properties
 - echo "sonatypeUsername=xxx" >> ~/.gradle/gradle.properties
 - echo "sonatypePassword=xxx" >> ~/.gradle/gradle.properties

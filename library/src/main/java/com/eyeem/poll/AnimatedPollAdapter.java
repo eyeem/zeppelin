@@ -1,6 +1,7 @@
 package com.eyeem.poll;
 
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import com.eyeem.storage.Storage;
 
@@ -38,27 +39,7 @@ public abstract class AnimatedPollAdapter extends BaseAdapter implements PollLis
          if (!paused && index > 0) {
             plv.setListSelectionFromTop(index + plv.getListHeaderViewsCount(), px);
             if (index == 1) {
-               ((View)plv).postDelayed(new Runnable() {
-
-                  int counter = 0;
-
-                  @Override
-                  public void run() {
-                     int offset = plv.getListFirstVisiblePosition();
-                     if (offset == 0 || counter == 1) {
-                        plv.setListSelection(0);
-                        return;
-                     }
-                     int distance = 0;
-                     int duration = 1000 * (offset + 1);
-                     if (plv.getListChildCount() > 0)
-                        distance = plv.getListChildAt(0).getHeight() * offset; // approx
-
-                     plv.listSmoothScrollBy(-distance, duration);
-                     ((View)plv).postDelayed(this, duration);
-                     counter++;
-                  }
-               }, 500);
+               new ScrollerRunnable((AbsListView)plv, 500).start(0);
             } else {
                // TODO new items indicator
                plv.setListSelection(0);

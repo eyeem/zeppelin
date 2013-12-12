@@ -39,7 +39,12 @@ public abstract class AnimatedPollAdapter extends BaseAdapter implements PollLis
          if (!paused && index > 0) {
             plv.setListSelectionFromTop(index + plv.getListHeaderViewsCount(), px);
             if (index == 1) {
-               new ScrollerRunnable((AbsListView)plv, 500).start(0);
+               ((View)plv).postDelayed(new Runnable() {
+                  @Override
+                  public void run() {
+                     new ScrollerRunnable((AbsListView)plv).start(0);
+                  }
+               }, 500);
             } else {
                // TODO new items indicator
                plv.setListSelection(0);

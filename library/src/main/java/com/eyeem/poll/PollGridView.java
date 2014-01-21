@@ -163,6 +163,8 @@ public class PollGridView extends GridView implements PollListView {
       }
    }
 
+   @Override public void onError(Throwable t, boolean fetchTop) {}
+
    /**
     * Call in Activity's or Fragment's onPause
     */
@@ -361,6 +363,7 @@ public class PollGridView extends GridView implements PollListView {
       public void onError(Throwable error) {
          if (indicator != null)
             indicator.setBusyIndicator(false);
+         PollGridView.this.onError(error, false);
       }
 
       @Override
@@ -393,7 +396,7 @@ public class PollGridView extends GridView implements PollListView {
          String msg = null;
          if (error == null || (msg = error.getMessage()) == null || TextUtils.isEmpty(msg))
             msg = getContext().getString(problemsLabelId);
-         //messageWithDelay(msg);
+         PollGridView.this.onError(error, true);
          if (indicator != null) {
             indicator.pullToRefreshDone();
             indicator.setBusyIndicator(false);

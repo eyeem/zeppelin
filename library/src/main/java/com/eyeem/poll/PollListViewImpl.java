@@ -320,6 +320,8 @@ public class PollListViewImpl extends ListView implements PollListView {
       }
    }
 
+   @Override public void onError(Throwable t, boolean fetchTop) {}
+
    /**
     * Basically sets adapter in busy mode whenever scroll is in
     * FLING mode. This allows to avoid expensive image loading tasks.
@@ -376,6 +378,7 @@ public class PollListViewImpl extends ListView implements PollListView {
       public void onError(Throwable error) {
          if (indicator != null)
             indicator.setBusyIndicator(false);
+         PollListViewImpl.this.onError(error, false);
       }
 
       @Override
@@ -408,7 +411,7 @@ public class PollListViewImpl extends ListView implements PollListView {
          String msg = null;
          if (error == null || (msg = error.getMessage()) == null || TextUtils.isEmpty(msg))
             msg = getContext().getString(problemsLabelId);
-         //messageWithDelay(msg);
+         PollListViewImpl.this.onError(error, true);
          if (indicator != null) {
             indicator.pullToRefreshDone();
             indicator.setBusyIndicator(false);

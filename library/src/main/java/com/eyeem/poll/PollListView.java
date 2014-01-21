@@ -46,6 +46,7 @@ public interface PollListView {
    public PollAdapter getDataAdapter();
 
    public void performPullToRefresh();
+   public void onError(Throwable t, boolean fetchTop);
 
    /**
     * Don't use this, use setDataAdapter instead

@@ -64,6 +64,11 @@ public class PollGridView extends GridView implements PollListView {
       loadAttributes(context, attrs);
    }
 
+   public PollGridView(Context context, AttributeSet attrs, int defStyle) {
+      super(context, attrs, defStyle);
+      loadAttributes(context, attrs);
+   }
+
    private void loadAttributes(Context context, AttributeSet attrs) {
       TypedArray arr = context.obtainStyledAttributes(attrs, R.styleable.PollListView);
       progressLabelId = arr.getResourceId(R.styleable.PollListView_progress_text, R.string.default_progress_label);

@@ -205,7 +205,6 @@ public class PollGridView extends GridView implements PollListView {
          poll.exhausted = false;
 
          poll.list.subscribe(subscription);
-         poll.list.extOn();
          if (!poll.list.ensureConsistence() || poll.list.isEmpty()) {
             poll.resetLastTimeUpdated();
             poll.list.load();
@@ -222,9 +221,6 @@ public class PollGridView extends GridView implements PollListView {
    }
 
    public void onDestroy() {
-      if (poll != null && poll.list != null) {
-         poll.list.extOff();
-      }
    }
 
    /**
